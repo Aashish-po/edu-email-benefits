@@ -2,8 +2,8 @@
 
 > **Your `.edu` email is a golden ticket.** Unlock 50+ exclusive deals, discounts, and services verified with a simple email check. No application forms. No waiting. Instant access.
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-Visit%20Now-3b82f6?style=for-the-badge&logoColor=white)](https://yourusername.github.io/edu-email-benefits)
-[![Benefits](https://img.shields.io/badge/Benefits-50%2B-22d3ee?style=for-the-badge)](https://yourusername.github.io/edu-email-benefits)
+[![Live Site](https://img.shields.io/badge/Live%20Site-Visit%20Now-3b82f6?style=for-the-badge&logoColor=white)](https://aashish-po.github.io/edu-email-benefits/)
+[![Benefits](https://img.shields.io/badge/Benefits-50%2B-22d3ee?style=for-the-badge)](https://aashish-po.github.io/edu-email-benefits/)
 [![License](https://img.shields.io/badge/License-MIT-a78bfa?style=for-the-badge)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-4ade80?style=for-the-badge)](CONTRIBUTING.md)
 
@@ -461,6 +461,6 @@ MIT — free to use, share, modify, and build upon. If this guide helped you unl
 <p align="center">
   Made for students, by students &nbsp;·&nbsp;
   <a href="https://education.github.com/pack">GitHub Education</a> &nbsp;·&nbsp;
-  <a href="https://yourusername.github.io/edu-email-benefits">Live Site</a>
+  <a href="https://aashish-po.github.io/edu-email-benefits/">Live Site</a>
 </p>
-# edu-email-benefits
+
