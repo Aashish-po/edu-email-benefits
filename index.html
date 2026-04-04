@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.edu Email Benefits Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #3b82f6;
+      --secondary: #22d3ee;
+      --accent: #4ade80;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+    }
+
+    .stat small {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .search-section {
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .pill:hover {
+      border-color: var(--primary);
+    }
+
+    .pill.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .categories {
+      display: grid;
+      gap: 3rem;
+    }
+
+    .category {
+      background: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .category-header.hidden {
+      display: none;
+    }
+
+    .benefits {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .benefit {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .benefit:last-child {
+      border-bottom: none;
+    }
+
+    .benefit:hover {
+      background: var(--light);
+    }
+
+    .benefit-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .benefit-name a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .benefit-name a:hover {
+      text-decoration: underline;
+    }
+
+    .benefit-type {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      margin-right: 0.5rem;
+    }
+
+    .free {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .discount {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .credits {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .benefit-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 0.75rem;
+    }
+
+    .benefit-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .meta-item strong {
+      color: var(--dark);
+      display: block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .claim-btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 0.75rem;
+    }
+
+    .claim-btn:hover {
+      background: #2563eb;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #64748b;
+    }
+
+    .no-results h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .stats {
+        gap: 1rem;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-input {
+        min-width: auto;
+      }
+
+      .benefit-meta {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>📧 .edu Email Benefits Hub</h1>
+    <p>50+ free tools, discounts, and credits — verified with your .edu email</p>
+    <div class="stats">
+      <div class="stat">
+        <strong id="benefit-count">50+</strong>
+        <small>Active Benefits</small>
+      </div>
+      <div class="stat">
+        <strong>10</strong>
+        <small>Categories</small>
+      </div>
+      <div class="stat">
+        <strong>∞</strong>
+        <small>Savings</small>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="search-section">
+      <div class="search-box">
+        <input type="text" id="search" class="search-input"
+          placeholder="Search by service name, description, or category..." autofocus>
+      </div>
+      <div class="filter-pills">
+        <button class="pill active" data-filter="all">All</button>
+        <button class="pill" data-filter="free">🟢 Free</button>
+        <button class="pill" data-filter="discount">🟡 Discount</button>
+        <button class="pill" data-filter="credits">🟣 Credits</button>
+        <button class="pill" data-filter="development">💻 Development</button>
+        <button class="pill" data-filter="design">🎨 Design</button>
+        <button class="pill" data-filter="cloud">☁️ Cloud</button>
+        <button class="pill" data-filter="learning">📚 Learning</button>
+      </div>
+    </div>
+
+    <div id="results" class="categories"></div>
+  </div>
+
+  <footer>
+    <p>Made for students, by students &nbsp;·&nbsp;
+      <a href="https://education.github.com/pack">GitHub Education Pack</a> &nbsp;·&nbsp;
+      <a href="https://github.com/Aashish-po/edu-email-benefits">View on GitHub</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.9;">
+      Created by <strong>Aashish Poudel</strong> &nbsp;·&nbsp;
+      <a href="https://github.com/Aashish-po">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/aashish-paudel-3">LinkedIn</a> &nbsp;·&nbsp;
+      <a href="mailto:poudelashish572@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    const BENEFITS = {
+      'Software & Development': [
+        { name: 'JetBrains All IDEs', type: 'free', desc: 'IntelliJ, PyCharm, WebStorm, GoLand, Rider, CLion & more—every pro IDE in one licence', verification: '.edu email auto-verify', link: 'https://www.jetbrains.com/community/education/', tags: ['free', 'development'] },
+        { name: 'GitHub Education', type: 'free', desc: 'GitHub Copilot Pro, GitHub Pro, and 30+ partner benefits in one application', verification: '.edu email or Student Pack', link: 'https://education.github.com/', tags: ['free', 'development'] },
+        { name: 'Visual Studio Professional', type: 'free', desc: 'Full-featured IDE for C#, C++, VB.NET, and web development—1 year free', verification: '.edu email verification', link: 'https://visualstudio.microsoft.com/vs/professional/', tags: ['free', 'development'] },
+        { name: 'MongoDB Atlas', type: 'free', desc: 'Fully managed cloud MongoDB with enhanced free tier and vector search included', verification: 'Student email verification', link: 'https://www.mongodb.com/students', tags: ['free', 'development', 'cloud'] },
+        { name: 'Stack Overflow Teams', type: 'free', desc: 'Private team collaboration for code questions and knowledge sharing', verification: '.edu email auto-verify', link: 'https://stackoverflow.com/teams', tags: ['free', 'development'] },
+        { name: 'Namecheap Free Domain', type: 'free', desc: 'Free .me domain registration for one year plus free SSL certificate', verification: 'GitHub Education Pack', link: 'https://education.github.com/pack', tags: ['free', 'development'] },
+      ],
+      'Design & Creative Tools': [
+        { name: 'Figma Professional', type: 'free', desc: 'Collaborative UI/UX design and prototyping—the industry standard at top tech companies', verification: '.edu email auto-verify', link: 'https://www.figma.com/education/', tags: ['free', 'design'] },
+        { name: 'Adobe Creative Cloud', type: 'discount', desc: 'Photoshop, Illustrator, Premiere Pro, After Effects, XD, and 20+ more apps (65% OFF)', verification: 'SheerID verification', link: 'https://www.adobe.com/creativecloud/buy/students.html', tags: ['discount', 'design'] },
+        { name: 'Autodesk All Products', type: 'free', desc: 'AutoCAD, Fusion 360, Maya, 3ds Max, Revit—professional CAD and 3D tools, free 1–3 years', verification: 'Student verification', link: 'https://www.autodesk.com/education/edu-software', tags: ['free', 'design'] },
+        { name: 'Blender', type: 'free', desc: 'Open-source 3D suite for modelling, sculpting, animation, VFX, and rendering', verification: 'None—always free', link: 'https://www.blender.org/', tags: ['free', 'design'] },
+        { name: 'Canva Pro', type: 'free', desc: 'Drag-and-drop design with premium templates, brand kits, and AI tools', verification: '.edu email or campus program', link: 'https://www.canva.com/education/', tags: ['free', 'design'] },
+        { name: 'Sketch', type: 'discount', desc: 'Beloved macOS-native UI tool with symbols and plugin ecosystem (50% OFF)', verification: 'Student email verification', link: 'https://www.sketch.com/store/edu/', tags: ['discount', 'design'] },
+      ],
+      'Cloud Services & Credits': [
+        { name: 'Microsoft Azure', type: 'credits', desc: '$100 in credits for 12 months to use across 200+ cloud services', verification: '.edu email verification', link: 'https://azure.microsoft.com/en-us/free/students/', tags: ['credits', 'cloud'] },
+        { name: 'AWS Educate', type: 'credits', desc: 'Free AWS credits, hands-on labs, and certification prep—no credit card required', verification: '.edu email verification', link: 'https://aws.amazon.com/education/awseducate/', tags: ['credits', 'cloud'] },
+        { name: 'Google Cloud Free Tier', type: 'credits', desc: '$300 in credits for new users—use across Compute Engine, Cloud Storage, BigQuery, and more', verification: 'Account creation', link: 'https://cloud.google.com/free', tags: ['credits', 'cloud'] },
+        { name: 'DigitalOcean Credits', type: 'credits', desc: '$200 in credits via GitHub Education Pack—VMs, databases, Kubernetes, and storage', verification: 'GitHub Education Pack', link: 'https://education.github.com/pack', tags: ['credits', 'cloud'] },
+        { name: 'Vercel', type: 'free', desc: 'Deploy Next.js, React, and static sites instantly—automatic HTTPS and global CDN included', verification: '.edu email verification', link: 'https://vercel.com/for-education', tags: ['free', 'cloud'] },
+      ],
+      'Learning Platforms': [
+        { name: 'Microsoft Learn', type: 'free', desc: 'Free learning paths and hands-on modules for Azure, Microsoft 365, and development', verification: '.edu email auto-verify', link: 'https://learn.microsoft.com/', tags: ['free', 'learning'] },
+        { name: 'LinkedIn Learning', type: 'free', desc: '5,000+ professional courses on tech, business, and creative skills', verification: 'University partnership or employer', link: 'https://www.linkedin.com/learning/', tags: ['free', 'learning'] },
+        { name: 'DataCamp Premium', type: 'discount', desc: 'Interactive data science courses—Python, R, SQL, ML, AI (50% OFF)', verification: 'Student email verification', link: 'https://www.datacamp.com/pricing', tags: ['discount', 'learning'] },
+        { name: 'Coursera', type: 'free', desc: 'Audit thousands of courses free; paid certificates optional', verification: 'Account creation', link: 'https://www.coursera.org/', tags: ['free', 'learning'] },
+        { name: 'MIT OpenCourseWare', type: 'free', desc: 'Free university-level courses from MIT with lecture notes, exams, and solutions', verification: 'None—always free', link: 'https://ocw.mit.edu/', tags: ['free', 'learning'] },
+      ],
+      'Productivity & Office': [
+        { name: 'Microsoft Office 365', type: 'free', desc: 'Word, Excel, PowerPoint, Teams, OneNote, OneDrive—the full desktop suite, not just web apps', verification: '.edu email auto-verify', link: 'https://www.microsoft.com/en-us/education/products/office', tags: ['free'] },
+        { name: 'Notion Personal Pro', type: 'free', desc: 'All-in-one workspace for notes, databases, wikis, and project management', verification: '.edu email auto-verify', link: 'https://www.notion.so/pricing', tags: ['free'] },
+        { name: 'Miro Team', type: 'free', desc: 'Infinite online whiteboard for brainstorming, diagramming, and team collaboration', verification: '.edu email verification', link: 'https://miro.com/education/', tags: ['free'] },
+        { name: 'Lucidchart', type: 'free', desc: 'Create professional flowcharts, org charts, network diagrams, and mind maps', verification: '.edu email auto-verify', link: 'https://www.lucidchart.com/pages/usecase/education', tags: ['free'] },
+        { name: 'Airtable Pro', type: 'discount', desc: 'Database meets spreadsheet—build trackers, CRMs, and calendars (50% OFF)', verification: '.edu email verification', link: 'https://airtable.com/pricing', tags: ['discount'] },
+      ],
+      'AI & Research': [
+        { name: 'Google One AI Premium', type: 'free', desc: 'Gemini Advanced, 2TB Google Drive storage, and NotebookLM Pro—2 years free (US only)', verification: '.edu email (US colleges)', link: 'https://one.google.com/', tags: ['free'] },
+        { name: 'Notion AI', type: 'free', desc: 'AI writing assistant built into Notion—summarize, translate, generate, and edit', verification: '.edu email auto-verify', link: 'https://www.notion.so/product/ai', tags: ['free'] },
+        { name: 'Perplexity Pro', type: 'free', desc: 'AI search engine citing sources + GPT-4o, Claude Sonnet, and file uploads (24 months free)', verification: 'Student email verification', link: 'https://www.perplexity.ai/', tags: ['free'] },
+        { name: 'Semantic Scholar', type: 'free', desc: 'AI-powered research paper search with citation tracking and summaries', verification: 'None—always free', link: 'https://www.semanticscholar.org/', tags: ['free'] },
+      ],
+      'Professional & Entertainment': [
+        { name: 'LinkedIn Premium', type: 'free', desc: 'See profile visitors, InMail credits, and salary insights—1 month free', verification: 'Any LinkedIn account (once/year)', link: 'https://www.linkedin.com/premium/', tags: ['free'] },
+        { name: 'Amazon Prime Student', type: 'free', desc: 'Free same-day delivery, Prime Video, Prime Music, and exclusive deals—6 months free', verification: '.edu email verification', link: 'https://www.amazon.com/amazonprime', tags: ['free'] },
+        { name: 'Spotify Premium Student', type: 'discount', desc: 'Ad-free music streaming with offline downloads (50% OFF ~ $5.99/month)', verification: 'Student email verification', link: 'https://www.spotify.com/student/', tags: ['discount'] },
+        { name: 'YouTube Premium Student', type: 'discount', desc: 'Ad-free videos, offline downloads, and background play (50% OFF ~ $6.99/month)', verification: 'Student email verification', link: 'https://www.youtube.com/premium', tags: ['discount'] },
+      ],
+    };
+
+    let activeFilter = 'all';
+
+    function renderBenefits(filter = 'all', search = '') {
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+      let foundAny = false;
+
+      for (const [category, benefits] of Object.entries(BENEFITS)) {
+        const filteredBenefits = benefits.filter(b => {
+          const matchesSearch = search === '' ||
+            b.name.toLowerCase().includes(search.toLowerCase()) ||
+            b.desc.toLowerCase().includes(search.toLowerCase());
+
+          const matchesFilter = filter === 'all' || b.tags.includes(filter);
+
+          return matchesSearch && matchesFilter;
+        });
+
+        if (filteredBenefits.length > 0) {
+          foundAny = true;
+          const categoryHtml = `
+            <div class="category">
+              <div class="category-header">${category}</div>
+              <div class="benefits">
+                ${filteredBenefits.map(b => `
+                  <div class="benefit">
+                    <div class="benefit-name"><a href="${b.link}" target="_blank">${b.name}</a></div>
+                    <span class="benefit-type ${b.type}">${b.type === 'free' ? '🟢 FREE' : b.type === 'discount' ? '🟡 DISCOUNTED' : '🟣 CREDITS'}</span>
+                    <div class="benefit-desc">${b.desc}</div>
+                    <div class="benefit-meta">
+                      <div class="meta-item">
+                        <strong>Verification</strong>
+                        ${b.verification}
+                      </div>
+                    </div>
+                    <a href="${b.link}" target="_blank" class="claim-btn">→ Claim →</a>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+          resultsDiv.innerHTML += categoryHtml;
+        }
+      }
+
+      if (!foundAny) {
+        resultsDiv.innerHTML = `
+          <div class="no-results">
+            <h2>No benefits found</h2>
+            <p>Try adjusting your search or filters</p>
+          </div>
+        `;
+      }
+    }
+
+    // Search handler
+    document.getElementById('search').addEventListener('input', (e) => {
+      renderBenefits(activeFilter, e.target.value);
+    });
+
+    // Filter handlers
+    document.querySelectorAll('.pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        activeFilter = pill.dataset.filter;
+        renderBenefits(activeFilter, document.getElementById('search').value);
+      });
+    });
+
+    // Initial render
+    renderBenefits();
+  </script>
+</body>
+
+</html>
