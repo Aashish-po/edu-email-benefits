@@ -2,20 +2,38 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+The following versions of this project are currently being supported with security updates and patches.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 1.x     | :white_check_mark: |
+| 0.x     | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+We take security vulnerabilities seriously and appreciate your responsible disclosure. Please do **not** open a public issue for security vulnerabilities.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+### How to Report
+
+Please email security concerns to the maintainers with:
+- A description of the vulnerability
+- Steps to reproduce the issue
+- Potential impact and severity
+- Any proposed fixes (optional)
+
+### What to Expect
+
+- You will receive an acknowledgment of your report within 48 hours
+- We will investigate and determine the severity of the vulnerability
+- We will work on a fix and coordinate a responsible disclosure timeline
+- You will be credited in the security advisory (unless you request anonymity)
+- Security patches will be released as soon as possible for supported versions
+
+### Scope
+
+This security policy applies to:
+- The main codebase and all official releases
+- Dependencies listed in project configuration files
+- All supported versions listed above
+
+Thank you for helping keep this project secure.
